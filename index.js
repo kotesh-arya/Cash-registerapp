@@ -2,7 +2,8 @@ const billAmount = document.querySelector("#bill-amount");
 const cashGiven = document.querySelector("#cash-given");
 const checkButton = document.querySelector("#check-amount")
 const message = document.querySelector("#error-message")
-
+const noteArray = [2000,500,100,20,10,5,1];
+const numberOfNotes = document.querySelectorAll(".no-of-notes")
 
 checkButton.addEventListener("click", () => {
     message.style.display = "none";
@@ -10,7 +11,7 @@ checkButton.addEventListener("click", () => {
        
         if (cashGiven.value >= billAmount.value) {
             const payBackAmount = cashGiven.value - billAmount.value;
-            calculateChange(payBackAmount);
+           calculateChange(payBackAmount);
             if (cashGiven.value == billAmount.value) {
                 messageShown("Welcome again");
             }
@@ -21,12 +22,17 @@ checkButton.addEventListener("click", () => {
         messageShown("Nothing is free here!");
     }
 });
+function calculateChange(payBackAmount){
+   for(let i=0; i<noteArray.length;i++){
+       const noteNumber = Math.trunc(payBackAmount/noteArray[i]);
+       payBackAmount %= noteArray[i];
+      numberOfNotes[i].innerText = noteNumber;
+   }
+}
+
 
 function messageShown(result) {
     message.style.display = "block";
     message.innerText = result;
 }
 
- function calculateChange(payBackAmount){
-
-}
