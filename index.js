@@ -1,9 +1,18 @@
 const billAmount = document.querySelector("#bill-amount");
+const nextButton = document.querySelector("#next-btn");
+const revealPart = document.querySelector("#reveal-div");
 const cashGiven = document.querySelector("#cash-given");
 const checkButton = document.querySelector("#check-amount")
 const message = document.querySelector("#error-message")
 const noteArray = [2000,500,100,20,10,5,1];
 const numberOfNotes = document.querySelectorAll(".no-of-notes")
+
+revealPart.style.display = "none";
+
+nextButton.addEventListener("click",()=>{
+    revealPart.style.display = "block";
+
+})
 
 checkButton.addEventListener("click", () => {
     message.style.display = "none";
