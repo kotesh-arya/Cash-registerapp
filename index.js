@@ -1,4 +1,4 @@
-var billAmount = document.querySelector("#bill-amount");
+const billAmount = document.querySelector("#bill-amount");
 const nextButton = document.querySelector("#next-btn");
 const mainMessage = document.querySelector("#main-message");
 const revealPart = document.querySelector("#reveal-div");
@@ -9,15 +9,19 @@ const noteArray = [2000, 500, 100, 20, 10, 5, 1];
 const numberOfNotes = document.querySelectorAll(".no-of-notes")
 
 revealPart.style.display = "none";
- billAmount = String(billAmount);
-nextButton.addEventListener("click", () => {
 
-  if( typeof billAmount ==="string"){
-    firstMessage("Only numbers are allowed!");
-  }else{
-    revealPart.style.display = "block";
-  }
-       
+nextButton.addEventListener("click", () => {
+    const billNumber = Number(billAmount.value);
+    console.log(billNumber);
+    if (!isNaN(billNumber)) {
+        mainMessage.style.display = "none";
+
+        revealPart.style.display = "block";
+    } else {
+        firstMessage("Oops! that should be a number");
+    }
+
+
 
 })
 
@@ -43,7 +47,7 @@ checkButton.addEventListener("click", () => {
 function calculateChange(payBackAmount) {
     for (let i = 0; i < noteArray.length; i++) {
         const noteNumber = Math.trunc(payBackAmount / noteArray[i]);
-        payBackAmount = payBackAmount% noteArray[i]; //updating the paybackamount value after one iteration
+        payBackAmount = payBackAmount % noteArray[i]; //updating the paybackamount value after one iteration
         numberOfNotes[i].innerText = noteNumber; // updating the noofnotes box from the first divides and truncated value
     }
 }
