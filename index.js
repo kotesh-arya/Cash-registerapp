@@ -11,36 +11,48 @@ const numberOfNotes = document.querySelectorAll(".no-of-notes")
 revealPart.style.display = "none";
 
 nextButton.addEventListener("click", () => {
-    const billNumber = Number(billAmount.value);
-    console.log(billNumber);
-    if (!isNaN(billNumber)) {
-        mainMessage.style.display = "none";
 
-        revealPart.style.display = "block";
+    if (billAmount.value) {
+        if (Number(billAmount.value) > 0) {
+            revealPart.style.display = "block";
+            mainMessage.style.display = "none";
+            nextButton.style.display = "none";
+
+        } else {
+            firstMessage("That should be a valid number");
+        }
     } else {
-        firstMessage("Oops! that should be a number");
+        firstMessage("Sorry! you should enter a value")
     }
-
-
 
 })
 
 checkButton.addEventListener("click", () => {
     message.style.display = "none";
+    const cashValue = Number(cashGiven.value);
+    const billValue = Number(billAmount.value);
+    if (billAmount.value && cashGiven.value) {
 
-    if (billAmount.value > 0) {
+        if (billValue > 0 && cashValue > 0) {
 
-        if (cashGiven.value >= billAmount.value) {
-            const payBackAmount = cashGiven.value - billAmount.value;
-            calculateChange(payBackAmount);
-            if (cashGiven.value == billAmount.value) {
-                messageShown("Welcome again");
+            if (cashValue >= billValue) {
+                if (cashValue == billValue) {
+                    messageShown("No change needed");
+                }else{
+                    const payBackAmount = cashValue - billValue;
+                    calculateChange(payBackAmount);
+                    
+                }
+                
+            } else {
+                messageShown("cash should be atleast equal to the bill amount");
             }
-        } else {
-            messageShown("cash should be atleast equal to the bill amount");
+        }else{
+            messageShown("That should not be negative");
         }
+
     } else {
-        messageShown("Nothing is free here!");
+        messageShown("Enter a valid amount!");
     }
 });
 

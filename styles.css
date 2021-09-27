@@ -16,7 +16,7 @@ body{
 .container{
     margin-top: 50px;
     padding: 100px;
-    width: 900px;
+    max-width: 80%;
     height: 850px;
     display: flex;
     justify-content: center;
