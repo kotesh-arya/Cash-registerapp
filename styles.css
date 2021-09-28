@@ -26,9 +26,11 @@ body{
     box-shadow: -4px -4px 5px #ffffff, 4px 4px 15px #000000;
     border-radius: 30px;
 }
-.reveal-div{
-    text-align: center;
-    width: 3;
+#reveal-div{
+    
+   text-align: center;
+   
+
 }
 table{
     margin: 40px;

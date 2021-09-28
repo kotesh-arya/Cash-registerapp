@@ -4,9 +4,10 @@ const mainMessage = document.querySelector("#main-message");
 const revealPart = document.querySelector("#reveal-div");
 const cashGiven = document.querySelector("#cash-given");
 const checkButton = document.querySelector("#check-amount")
-const message = document.querySelector("#error-message")
+const message = document.querySelector("#error-message");
+const changeTable = document.querySelector("#change-table");
 const noteArray = [2000, 500, 100, 20, 10, 5, 1];
-const numberOfNotes = document.querySelectorAll(".no-of-notes")
+const numberOfNotes = document.querySelectorAll(".no-of-notes");
 
 revealPart.style.display = "none";
 
@@ -22,13 +23,14 @@ nextButton.addEventListener("click", () => {
             firstMessage("That should be a valid number");
         }
     } else {
-        firstMessage("Sorry! you should enter a value")
+        firstMessage("Sorry! you should enter a value");
     }
 
 })
 
 checkButton.addEventListener("click", () => {
     message.style.display = "none";
+   
     const cashValue = Number(cashGiven.value);
     const billValue = Number(billAmount.value);
     if (billAmount.value && cashGiven.value) {
@@ -46,13 +48,17 @@ checkButton.addEventListener("click", () => {
                 
             } else {
                 messageShown("cash should be atleast equal to the bill amount");
+                changeTable.style.display = "none";
+               
             }
         }else{
-            messageShown("That should not be negative");
+            messageShown("It's not a free sale day!");
+            changeTable.style.display = "none";
         }
 
     } else {
         messageShown("Enter a valid amount!");
+        changeTable.style.display = "none";
     }
 });
 
