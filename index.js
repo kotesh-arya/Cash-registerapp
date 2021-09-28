@@ -30,7 +30,7 @@ nextButton.addEventListener("click", () => {
 
 checkButton.addEventListener("click", () => {
     message.style.display = "none";
-   
+
     const cashValue = Number(cashGiven.value);
     const billValue = Number(billAmount.value);
     if (billAmount.value && cashGiven.value) {
@@ -40,18 +40,18 @@ checkButton.addEventListener("click", () => {
             if (cashValue >= billValue) {
                 if (cashValue == billValue) {
                     messageShown("No change needed");
-                }else{
+                } else {
+                    changeTable.style.display = "block";
                     const payBackAmount = cashValue - billValue;
                     calculateChange(payBackAmount);
-                    
+
                 }
-                
+
             } else {
                 messageShown("cash should be atleast equal to the bill amount");
                 changeTable.style.display = "none";
-               
             }
-        }else{
+        } else {
             messageShown("It's not a free sale day!");
             changeTable.style.display = "none";
         }
