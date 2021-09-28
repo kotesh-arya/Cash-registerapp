@@ -40,6 +40,8 @@ checkButton.addEventListener("click", () => {
             if (cashValue >= billValue) {
                 if (cashValue == billValue) {
                     messageShown("No change needed");
+                changeTable.style.display = "none";
+
                 } else {
                     changeTable.style.display = "block";
                     const payBackAmount = cashValue - billValue;
