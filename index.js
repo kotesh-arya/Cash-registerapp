@@ -54,7 +54,7 @@ checkButton.addEventListener("click", () => {
                 changeTable.style.display = "none";
             }
         } else {
-            messageShown("It's not a free sale day!");
+            messageShown("Please enter valid values in the fields given");
             changeTable.style.display = "none";
         }
 
